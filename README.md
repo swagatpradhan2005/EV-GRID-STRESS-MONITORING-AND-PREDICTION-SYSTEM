@@ -10,6 +10,29 @@ As EV adoption accelerates, uncoordinated charging creates dangerous stress peak
 
 ---
 
+##  Screenshots
+
+### Landing Page — EV Grid Stress Assessment
+<img width="1842" height="825" alt="Screenshot 2026-04-19 222004" src="https://github.com/user-attachments/assets/e8bd3596-4b57-4fce-beba-2c8113d39859" />
+
+> Select your Indian state and monitoring window (6h / 12h / 24h) to predict transformer overload risk across India's EV charging infrastructure — powered by Random Forest ML.
+
+---
+
+### Adjust Parameters Panel
+<img width="948" height="851" alt="Screenshot 2026-04-19 222051" src="https://github.com/user-attachments/assets/941bdc9f-8b19-4541-ba25-658f8071f9c2" />
+
+> Slide each parameter to reflect current grid conditions — Grid Load, Transformer Load, Charging Sessions, EV Population, Renewable Share, Charging Stations, and Fast Chargers — then run the assessment.
+
+---
+
+### Assessment Result
+<img width="857" height="291" alt="Screenshot 2026-04-19 222104" src="https://github.com/user-attachments/assets/31758d81-4f51-4868-a9ca-5c1de7db2517" />
+
+> The model returns a risk score and actionable analysis factors. In this example, Odisha scores 2/7 (Moderate Risk) due to grid load above safe threshold (7,221 MW > 7,200 MW) and insufficient charging infrastructure (375 stations < 500).
+
+---
+
 ##  Project Structure
 
 ```
@@ -142,9 +165,6 @@ Open `ev_grid_risk_map.html` in any browser to explore an interactive map showin
 
 ## 👤 Authors
 
-**Swagat Pradhan**
-- GitHub: [@swagatpradhan2005](https://github.com/swagatpradhan2005)
-
 **Sidharth Satapathy**
 - GitHub: [@SidharthSatapathy04](https://github.com/SidharthSatapathy04)
 
@@ -153,6 +173,9 @@ Open `ev_grid_risk_map.html` in any browser to explore an interactive map showin
   
 **Tumulu Mihika**
 - GitHub: [@TumuluMihika](https://github.com/TumuluMihika)
+
+**Swagat Pradhan**
+- GitHub: [@swagatpradhan2005](https://github.com/swagatpradhan2005)
 
 ---
 
