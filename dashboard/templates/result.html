@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result - EV Grid Stress Monitoring</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-brand">⚡ EV Grid Stress Monitoring</div>
+        <div class="navbar-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header-section">
+            <h1>Prediction Results</h1>
+            <p>{{ state }} - Grid Load Forecast & Risk Analysis</p>
+        </div>
+
+        {% if error %}
+        <div class="card error-section">
+            <div class="card-body">
+                <div class="error-message">⚠️ {{ error }}</div>
+                <a href="/" class="btn btn-secondary">Go Back</a>
+            </div>
+        </div>
+        {% else %}
+
+        <div class="main-content">
+            <!-- Main Result Cards -->
+            <div class="grid-2">
+                <!-- Grid Load Prediction -->
+                <div class="card result-card">
+                    <div class="card-header">
+                        <h2>🔌 Predicted Grid Load</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="result-display">
+                            <div class="result-value">{{ "%.2f"|format(predicted_grid_load) }}</div>
+                            <div class="result-unit">MW</div>
+                        </div>
+                        <div class="info-box">
+                            <p><strong>This prediction indicates the expected electrical load on the grid based on the EV charging parameters provided.</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Level -->
+                <div class="card result-card">
+                    <div class="card-header">
+                        <h2>⚠️ Overload Risk Level</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="risk-indicator risk-{{ risk_level|lower }}">
+                            <div class="risk-badge">{{ risk_level }}</div>
+                            <div class="risk-desc">
+                                {% if risk_level == "LOW" %}
+                                Grid is operating within safe parameters
+                                {% elif risk_level == "MEDIUM" %}
+                                Grid stress detected - mitigation recommended
+                                {% else %}
+                                CRITICAL: Immediate action required
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% if risk_probability %}
+                        <div class="info-box">
+                            <p><strong>Risk Probability:</strong> {{ "%.2f"|format(risk_probability * 100) }}%</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Parameters Summary -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>📊 Input Parameters Summary</h2>
+                </div>
+                <div class="card-body">
+                    <div class="grid-3">
+                        <div class="param-box">
+                            <div class="param-label">Charging Sessions</div>
+                            <div class="param-value">{{ charging_sessions }}</div>
+                        </div>
+                        <div class="param-box">
+                            <div class="param-label">Total Stations</div>
+                            <div class="param-value">{{ total_stations }}</div>
+                        </div>
+                        <div class="param-box">
+                            <div class="param-label">Transformer Load</div>
+                            <div class="param-value">{{ transformer_load }}%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mitigation Steps -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>💡 Recommended Actions</h2>
+                </div>
+                <div class="card-body">
+                    {% if risk_level == "LOW" %}
+                    <div class="success-box">
+                        <h3>✓ Grid Status: Healthy</h3>
+                        <ul>
+                            {% for step in mitigation_steps %}
+                            <li>{{ step }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% elif risk_level == "MEDIUM" %}
+                    <div class="warning-box">
+                        <h3>⚠️ Recommended Mitigation Measures:</h3>
+                        <ul>
+                            {% for step in mitigation_steps %}
+                            <li>{{ step }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% else %}
+                    <div class="danger-box">
+                        <h3>🚨 CRITICAL: Immediate Action Required!</h3>
+                        <ul>
+                            {% for step in mitigation_steps %}
+                            <li><strong>{{ step }}</strong></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Risk Details -->
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>🎯 Risk Analysis</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="risk-analysis">
+                            {% if risk_level == "LOW" %}
+                            <p><strong>Status:</strong> <span class="status-green">✓ SAFE</span></p>
+                            <p>The grid can handle the predicted EV charging load without significant stress.</p>
+                            {% elif risk_level == "MEDIUM" %}
+                            <p><strong>Status:</strong> <span class="status-yellow">⚠️ CAUTION</span></p>
+                            <p>The grid is approaching operational limits. Preventive measures should be implemented.</p>
+                            {% else %}
+                            <p><strong>Status:</strong> <span class="status-red">🚨 CRITICAL</span></p>
+                            <p>The grid is at risk of overload. Immediate action is required to prevent outages.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>📝 Overall Assessment</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="assessment">
+                            <ul>
+                                <li><strong>State:</strong> {{ state }}</li>
+                                <li><strong>Predicted Load:</strong> {{ "%.2f"|format(predicted_grid_load) }} MW</li>
+                                <li><strong>Risk Level:</strong> {{ risk_level }}</li>
+                                <li><strong>Timestamp:</strong> {{ now() if now else 'Current' }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <form method="POST" action="/parameters" style="display: inline;">
+                    <input type="hidden" name="state" value="{{ state }}">
+                    <button type="submit" class="btn btn-primary">MODIFY PARAMETERS</button>
+                </form>
+                <a href="/" class="btn btn-secondary">NEW PREDICTION</a>
+            </div>
+        </div>
+
+        {% endif %}
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 EV Grid Stress Monitoring System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

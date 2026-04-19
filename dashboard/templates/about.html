@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - EV Grid Stress Monitoring System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-brand">⚡ EV Grid Stress Monitoring</div>
+        <div class="navbar-links">
+            <a href="/">Home</a>
+            <a href="/about" class="active">About</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header-section">
+            <h1>About This System</h1>
+            <p>Understanding EV Grid Stress Monitoring and Prediction</p>
+        </div>
+
+        <div class="main-content">
+            <!-- Project Overview -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>🎯 Project Overview</h2>
+                </div>
+                <div class="card-body">
+                    <p>The EV Grid Stress Monitoring and Prediction System is an advanced machine learning solution designed to predict electrical grid stress caused by EV charging stations and determine overload risk across Indian states.</p>
+                    
+                    <p>This system integrates multiple data sources including:</p>
+                    <ul style="list-style: none; margin-top: 1rem;">
+                        <li>✓ Real-time EV charging data</li>
+                        <li>✓ Electrical grid metrics (voltage, frequency, load)</li>
+                        <li>✓ Infrastructure capacity information</li>
+                        <li>✓ Renewable energy generation data</li>
+                        <li>✓ EV adoption trends</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Technical Components -->
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>🔧 Technical Architecture</h2>
+                    </div>
+                    <div class="card-body">
+                        <h4>Data Processing</h4>
+                        <ul style="list-style: none;">
+                            <li>• Synthetic dataset generation (25,000+ records)</li>
+                            <li>• Multi-source data integration</li>
+                            <li>• Comprehensive preprocessing pipeline</li>
+                            <li>• Advanced feature engineering</li>
+                        </ul>
+
+                        <h4 style="margin-top: 1.5rem;">Machine Learning Models</h4>
+                        <ul style="list-style: none;">
+                            <li>• Random Forest Regressor & Classifier</li>
+                            <li>• XGBoost for enhanced predictions</li>
+                            <li>• Gradient Boosting models</li>
+                            <li>• Logistic Regression & SVM</li>
+                        </ul>
+
+                        <h4 style="margin-top: 1.5rem;">Evaluation Metrics</h4>
+                        <ul style="list-style: none;">
+                            <li>• R² Score, RMSE, MAE for regression</li>
+                            <li>• Accuracy, Precision, Recall, F1-Score</li>
+                            <li>• ROC-AUC for classification</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>📊 Features & Capabilities</h2>
+                    </div>
+                    <div class="card-body">
+                        <h4>Core Features</h4>
+                        <ul style="list-style: none;">
+                            <li>• Real-time grid load prediction</li>
+                            <li>• Binary overload risk classification</li>
+                            <li>• State-specific analysis</li>
+                            <li>• Historical pattern recognition</li>
+                        </ul>
+
+                        <h4 style="margin-top: 1.5rem;">Dashboard Features</h4>
+                        <ul style="list-style: none;">
+                            <li>• Interactive state selection</li>
+                            <li>• Parameter adjustment interface</li>
+                            <li>• Visual risk indicators</li>
+                            <li>• Actionable recommendations</li>
+                        </ul>
+
+                        <h4 style="margin-top: 1.5rem;">Visualization</h4>
+                        <ul style="list-style: none;">
+                            <li>• Comprehensive Jupyter notebooks</li>
+                            <li>• Distribution analysis plots</li>
+                            <li>• Time series analysis</li>
+                            <li>• Correlation heatmaps</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Levels -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>⚠️ Risk Levels & Mitigation</h2>
+                </div>
+                <div class="card-body">
+                    <div class="grid-3">
+                        <div class="info-box">
+                            <h4 style="color: var(--success-color); margin-bottom: 1rem;">LOW RISK</h4>
+                            <p><strong>Status:</strong> Grid is stable and operating within safe parameters.</p>
+                            <p style="margin-top: 0.75rem;"><strong>Action:</strong> Continue monitoring and maintain current charging distribution.</p>
+                        </div>
+
+                        <div class="info-box">
+                            <h4 style="color: var(--warning-color); margin-bottom: 1rem;">MEDIUM RISK</h4>
+                            <p><strong>Status:</strong> Grid is approaching operational limits.</p>
+                            <p style="margin-top: 0.75rem;"><strong>Action:</strong> Implement preventive measures like load shifting and smart charging.</p>
+                        </div>
+
+                        <div class="info-box">
+                            <h4 style="color: var(--danger-color); margin-bottom: 1rem;">HIGH RISK</h4>
+                            <p><strong>Status:</strong> Grid is at critical stress level.</p>
+                            <p style="margin-top: 0.75rem;"><strong>Action:</strong> Immediate intervention required to prevent outages.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How to Use -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>📖 How to Use This System</h2>
+                </div>
+                <div class="card-body">
+                    <h4>Step 1: Select Your State</h4>
+                    <p>Choose the Indian state for which you want to predict grid stress.</p>
+
+                    <h4 style="margin-top: 1.5rem;">Step 2: Adjust Parameters</h4>
+                    <p>Modify EV charging parameters, grid metrics, and infrastructure capacity based on your scenario.</p>
+
+                    <h4 style="margin-top: 1.5rem;">Step 3: Get Prediction</h4>
+                    <p>The system predicts grid load (MW) and overload risk level.</p>
+
+                    <h4 style="margin-top: 1.5rem;">Step 4: Review Recommendations</h4>
+                    <p>Implement recommended mitigation strategies based on risk level.</p>
+
+                    <div class="info-box" style="margin-top: 1.5rem;">
+                        <h4>💡 Tips for Better Predictions</h4>
+                        <ul>
+                            <li>Adjust charging sessions to simulate different demand scenarios</li>
+                            <li>Compare results across different times (peak vs off-peak)</li>
+                            <li>Test the impact of increasing renewable energy capacity</li>
+                            <li>Monitor transformer load - critical threshold is 90%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dataset Information -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>📈 Dataset Information</h2>
+                </div>
+                <div class="card-body">
+                    <div class="grid-2">
+                        <div>
+                            <h4>Main Dataset (25,000 rows)</h4>
+                            <ul style="list-style: none;">
+                                <li>• Timestamp data with 6-hour intervals</li>
+                                <li>• All 28 Indian states</li>
+                                <li>• Charging station metrics</li>
+                                <li>• Grid parameters (voltage, frequency)</li>
+                                <li>• Transformer load percentage</li>
+                                <li>• Energy consumption data</li>
+                                <li>• Peak hour and risk flags</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4>Supporting Datasets</h4>
+                            <ul style="list-style: none;">
+                                <li>• EV Charging Infrastructure (28 states)</li>
+                                <li>• State Electricity Demand</li>
+                                <li>• Renewable Energy Capacity</li>
+                                <li>• EV Adoption Trends</li>
+                                <li>• Geographic Data (GeoJSON)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Stack -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>🛠️ Technology Stack</h2>
+                </div>
+                <div class="card-body">
+                    <div class="grid-3">
+                        <div>
+                            <h4>Data Science</h4>
+                            <ul style="list-style: none;">
+                                <li>• Pandas</li>
+                                <li>• NumPy</li>
+                                <li>• Scikit-learn</li>
+                                <li>• XGBoost</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4>Visualization</h4>
+                            <ul style="list-style: none;">
+                                <li>• Matplotlib</li>
+                                <li>• Seaborn</li>
+                                <li>• Plotly</li>
+                                <li>• Chart.js</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4>Web Framework</h4>
+                            <ul style="list-style: none;">
+                                <li>• Flask</li>
+                                <li>• HTML5</li>
+                                <li>• CSS3</li>
+                                <li>• JavaScript</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact & Support -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>📞 Support & Documentation</h2>
+                </div>
+                <div class="card-body">
+                    <p><strong>For detailed documentation:</strong></p>
+                    <ul style="list-style: none; margin-top: 1rem;">
+                        <li>• Check the README.md file in the project root</li>
+                        <li>• Review Jupyter notebooks for analysis visualization</li>
+                        <li>• Examine source code for implementation details</li>
+                    </ul>
+
+                    <div class="info-box" style="margin-top: 1.5rem;">
+                        <p><strong>Project Structure:</strong></p>
+                        <ul>
+                            <li>data/ - Datasets and GeoJSON files</li>
+                            <li>src/ - Python modules and model training</li>
+                            <li>models/ - Trained ML models</li>
+                            <li>notebooks/ - Analysis and visualization</li>
+                            <li>dashboard/ - Flask web application</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <a href="/" class="btn btn-primary" style="max-width: 200px;">← Back to Home</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 EV Grid Stress Monitoring System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

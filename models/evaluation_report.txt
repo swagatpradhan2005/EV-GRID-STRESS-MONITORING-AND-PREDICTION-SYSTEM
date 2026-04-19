@@ -1,0 +1,28 @@
+
+EV GRID STRESS - MODEL EVALUATION REPORT
+============================================================
+
+Best Model: Random Forest
+
+CLASSIFICATION METRICS:
+  Accuracy:  1.0000
+  Precision: 1.0000
+  Recall:    1.0000
+  F1 Score:  1.0000
+
+CONFUSION MATRIX:
+[[1702    0]
+ [   0   18]]
+
+FEATURE IMPORTANCE (Top 10):
+
+  transformer_load_percent: 0.6967
+  grid_load_mw: 0.1365
+  frequency_hz: 0.0224
+  charging_sessions: 0.0168
+  energy_consumed_kwh: 0.0158
+  total_charging_stations: 0.0146
+  renewable_share_percent: 0.0131
+  slow_chargers: 0.0123
+  ev_population: 0.0122
+  voltage_v: 0.0108

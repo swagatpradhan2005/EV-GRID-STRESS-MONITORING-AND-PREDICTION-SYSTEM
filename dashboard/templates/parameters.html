@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parameters - EV Grid Stress Monitoring</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-brand">⚡ EV Grid Stress Monitoring</div>
+        <div class="navbar-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header-section">
+            <h1>{{ params.state }} - Grid Parameters</h1>
+            <p>Adjust parameters and predict grid stress for your region</p>
+        </div>
+
+        <div class="main-content">
+            <div class="grid-2">
+                <!-- Parameters Panel -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>⚙️ Charging Parameters</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="/predict">
+                            <input type="hidden" name="state" value="{{ params.state }}">
+
+                            <div class="form-group">
+                                <label for="charging_sessions">Charging Sessions:</label>
+                                <input type="number" id="charging_sessions" name="charging_sessions" 
+                                       value="{{ params.charging_sessions }}" min="0" max="5000" step="10">
+                                <small>Current: {{ params.charging_sessions }}</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="total_charging_stations">Total Charging Stations:</label>
+                                <input type="number" id="total_charging_stations" name="total_charging_stations"
+                                       value="{{ params.total_charging_stations }}" min="0" max="2000" step="10">
+                                <small>Current: {{ params.total_charging_stations }}</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fast_chargers">Fast Chargers:</label>
+                                <input type="number" id="fast_chargers" name="fast_chargers"
+                                       value="{{ params.fast_chargers }}" min="0" max="1000" step="5">
+                                <small>Current: {{ params.fast_chargers }}</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="slow_chargers">Slow Chargers:</label>
+                                <input type="number" id="slow_chargers" name="slow_chargers"
+                                       value="{{ params.slow_chargers }}" min="0" max="1000" step="5">
+                                <small>Current: {{ params.slow_chargers }}</small>
+                            </div>
+
+                            <hr class="divider">
+
+                            <div class="form-group">
+                                <label for="transformer_load_percent">Transformer Load (%):</label>
+                                <input type="number" id="transformer_load_percent" name="transformer_load_percent"
+                                       value="{{ params.transformer_load_percent }}" min="0" max="150" step="1">
+                                <small>Current: {{ params.transformer_load_percent }}%</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="voltage_v">Voltage (V):</label>
+                                <input type="number" id="voltage_v" name="voltage_v"
+                                       value="{{ params.voltage_v }}" min="200" max="250" step="0.1">
+                                <small>Current: {{ params.voltage_v }}V</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="frequency_hz">Frequency (Hz):</label>
+                                <input type="number" id="frequency_hz" name="frequency_hz"
+                                       value="{{ params.frequency_hz }}" min="49" max="51" step="0.01">
+                                <small>Current: {{ params.frequency_hz }}Hz</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="renewable_share_percent">Renewable Energy Share (%):</label>
+                                <input type="number" id="renewable_share_percent" name="renewable_share_percent"
+                                       value="{{ params.renewable_share_percent }}" min="0" max="100" step="1">
+                                <small>Current: {{ params.renewable_share_percent }}%</small>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">PREDICT</button>
+                            <a href="/" class="btn btn-secondary">BACK</a>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Statistics Panel -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>📈 State Statistics</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="stat-item">
+                            <div class="stat-label">Average Grid Load</div>
+                            <div class="stat-value">{{ stats.avg_grid_load }} MW</div>
+                        </div>
+
+                        <div class="stat-item">
+                            <div class="stat-label">Maximum Grid Load</div>
+                            <div class="stat-value">{{ stats.max_grid_load }} MW</div>
+                        </div>
+
+                        <div class="stat-item">
+                            <div class="stat-label">Minimum Grid Load</div>
+                            <div class="stat-value">{{ stats.min_grid_load }} MW</div>
+                        </div>
+
+                        <div class="stat-item">
+                            <div class="stat-label">Historical Overload Risk</div>
+                            <div class="stat-value risk-{{ 'high' if stats.risk_percentage > 20 else 'medium' if stats.risk_percentage > 10 else 'low' }}">
+                                {{ stats.risk_percentage }}%
+                            </div>
+                        </div>
+
+                        <div class="info-box">
+                            <h4>💡 Tips</h4>
+                            <ul>
+                                <li>Adjust charging sessions to simulate different demand levels</li>
+                                <li>Increase renewable share to see impact on grid stability</li>
+                                <li>Monitor transformer load - above 90% indicates risk</li>
+                                <li>Voltage should stay between 220V-240V for safe operation</li>
+                            </ul>
+                        </div>
+
+                        <div class="charts-container">
+                            <h4>Hourly Pattern</h4>
+                            <div id="hourly-chart" style="height: 250px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 EV Grid Stress Monitoring System. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Load hourly pattern chart
+        fetch('/api/get-state-data?state={{ params.state }}')
+            .then(response => response.json())
+            .then(data => {
+                const hours = Object.keys(data.hourly_pattern).map(h => parseInt(h) + ':00').sort();
+                const loads = Object.values(data.hourly_pattern).map(v => v.grid_load_mw || 0);
+
+                const ctx = document.getElementById('hourly-chart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: hours,
+                        datasets: [{
+                            label: 'Average Grid Load (MW)',
+                            data: loads,
+                            borderColor: '#3498DB',
+                            backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: true }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: { display: true, text: 'Load (MW)' }
+                            }
+                        }
+                    }
+                });
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_18176e7a776408ea02ee3b77e4d7c1ac {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+     bottom: 50px; right: 50px; width: 220px; height: 200px; 
+     background-color: white; border:2px solid grey; z-index:9999; 
+     font-size:14px; padding: 10px; border-radius: 5px;">
+<p style="margin: 0; font-weight: bold; border-bottom: 1px solid grey; padding-bottom: 5px;">
+EV Grid Risk Levels</p>
+<p style="margin: 10px 0;">
+<span style="color: green; font-weight: bold;">●</span> Low Risk (&lt;15%)
+</p>
+<p style="margin: 10px 0;">
+<span style="color: orange; font-weight: bold;">●</span> Medium Risk (15-30%)
+</p>
+<p style="margin: 10px 0;">
+<span style="color: red; font-weight: bold;">●</span> High Risk (&gt;30%)
+</p>
+<p style="margin: 10px 0; font-size: 12px; color: gray;">
+Circle size indicates risk intensity
+</p>
+</div>
+    
+            <div class="folium-map" id="map_18176e7a776408ea02ee3b77e4d7c1ac" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_18176e7a776408ea02ee3b77e4d7c1ac = L.map(
+                "map_18176e7a776408ea02ee3b77e4d7c1ac",
+                {
+                    center: [20.5937, 78.9629],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_bf4852c63d462154d2985e40d1b61312 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_bf4852c63d462154d2985e40d1b61312.addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var circle_marker_f301044282d4dafe0050a078745037ff = L.circleMarker(
+                [79.74, 15.9129],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.216, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_8987131573718d6eb6acee06c2357242 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_17b7d3f8f7bf747b0ae16c13d4d2f3a0 = $(`<div id="html_17b7d3f8f7bf747b0ae16c13d4d2f3a0" style="width: 100.0%; height: 100.0%;">         <b>Andhra Pradesh</b><br>         🔴 HIGH RISK<br>         Risk Rate: 31.1%<br>         <hr>         Avg Charging Stations: 366<br>         Avg Charging Sessions: 373<br>         Avg Grid Load: 6704 MW<br>         </div>`)[0];
+                popup_8987131573718d6eb6acee06c2357242.setContent(html_17b7d3f8f7bf747b0ae16c13d4d2f3a0);
+            
+        
+
+        circle_marker_f301044282d4dafe0050a078745037ff.bindPopup(popup_8987131573718d6eb6acee06c2357242)
+        ;
+
+        
+    
+    
+            circle_marker_f301044282d4dafe0050a078745037ff.bindTooltip(
+                `<div>
+                     Andhra Pradesh: 31.1% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_65732a730fc5053cc9052ac796b4d38b = L.marker(
+                [79.74, 15.9129],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_e87e2a1f3523ae9bd940c448ebc6dad4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_44e5bc3ec691ff92923f7fff9405955d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_47cdbb240ee7277a56b346bb6ebee838 = $(`<div id="html_47cdbb240ee7277a56b346bb6ebee838" style="width: 100.0%; height: 100.0%;">Andhra Pradesh</div>`)[0];
+                popup_44e5bc3ec691ff92923f7fff9405955d.setContent(html_47cdbb240ee7277a56b346bb6ebee838);
+            
+        
+
+        marker_65732a730fc5053cc9052ac796b4d38b.bindPopup(popup_44e5bc3ec691ff92923f7fff9405955d)
+        ;
+
+        
+    
+    
+                marker_65732a730fc5053cc9052ac796b4d38b.setIcon(icon_e87e2a1f3523ae9bd940c448ebc6dad4);
+            
+    
+            var circle_marker_5d51b7d65aa440cbbfa29d61e7605739 = L.circleMarker(
+                [93.61, 28.218],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.672, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_3be4ea9eeea17ae7256054fe2604f3b9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_42c25ff2041f06278e37021c503c7786 = $(`<div id="html_42c25ff2041f06278e37021c503c7786" style="width: 100.0%; height: 100.0%;">         <b>Arunachal Pradesh</b><br>         🟠 MEDIUM RISK<br>         Risk Rate: 28.4%<br>         <hr>         Avg Charging Stations: 387<br>         Avg Charging Sessions: 393<br>         Avg Grid Load: 6567 MW<br>         </div>`)[0];
+                popup_3be4ea9eeea17ae7256054fe2604f3b9.setContent(html_42c25ff2041f06278e37021c503c7786);
+            
+        
+
+        circle_marker_5d51b7d65aa440cbbfa29d61e7605739.bindPopup(popup_3be4ea9eeea17ae7256054fe2604f3b9)
+        ;
+
+        
+    
+    
+            circle_marker_5d51b7d65aa440cbbfa29d61e7605739.bindTooltip(
+                `<div>
+                     Arunachal Pradesh: 28.4% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2e49edea695a1e7f8608fe3496746d18 = L.marker(
+                [93.61, 28.218],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_370fc07b6145d816dd6f5dec0a09a2d3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_59126a365bfdfcb42d67f08fe26d03bc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_972ab6ce822f02a5e0d61ead99dcaeba = $(`<div id="html_972ab6ce822f02a5e0d61ead99dcaeba" style="width: 100.0%; height: 100.0%;">Arunachal Pradesh</div>`)[0];
+                popup_59126a365bfdfcb42d67f08fe26d03bc.setContent(html_972ab6ce822f02a5e0d61ead99dcaeba);
+            
+        
+
+        marker_2e49edea695a1e7f8608fe3496746d18.bindPopup(popup_59126a365bfdfcb42d67f08fe26d03bc)
+        ;
+
+        
+    
+    
+                marker_2e49edea695a1e7f8608fe3496746d18.setIcon(icon_370fc07b6145d816dd6f5dec0a09a2d3);
+            
+    
+            var circle_marker_ed1c76f7b0259807548b9bbf35b84726 = L.circleMarker(
+                [91.7898, 26.2006],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.406, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_07db76f4d1fef387a47c12af18d8827a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3ae4290fa22a6c3dafbddeb4365bee3e = $(`<div id="html_3ae4290fa22a6c3dafbddeb4365bee3e" style="width: 100.0%; height: 100.0%;">         <b>Assam</b><br>         🔴 HIGH RISK<br>         Risk Rate: 37.0%<br>         <hr>         Avg Charging Stations: 359<br>         Avg Charging Sessions: 398<br>         Avg Grid Load: 6989 MW<br>         </div>`)[0];
+                popup_07db76f4d1fef387a47c12af18d8827a.setContent(html_3ae4290fa22a6c3dafbddeb4365bee3e);
+            
+        
+
+        circle_marker_ed1c76f7b0259807548b9bbf35b84726.bindPopup(popup_07db76f4d1fef387a47c12af18d8827a)
+        ;
+
+        
+    
+    
+            circle_marker_ed1c76f7b0259807548b9bbf35b84726.bindTooltip(
+                `<div>
+                     Assam: 37.0% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_0b65a780940e8381d9b1e3a1d33d0537 = L.marker(
+                [91.7898, 26.2006],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_eb7ba6c58d7d7150ed06bebd42338ee1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c262fb1a84bfa6455127b9a7ac907ae4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b0cae10421e5cf367cbb0e08512e8366 = $(`<div id="html_b0cae10421e5cf367cbb0e08512e8366" style="width: 100.0%; height: 100.0%;">Assam</div>`)[0];
+                popup_c262fb1a84bfa6455127b9a7ac907ae4.setContent(html_b0cae10421e5cf367cbb0e08512e8366);
+            
+        
+
+        marker_0b65a780940e8381d9b1e3a1d33d0537.bindPopup(popup_c262fb1a84bfa6455127b9a7ac907ae4)
+        ;
+
+        
+    
+    
+                marker_0b65a780940e8381d9b1e3a1d33d0537.setIcon(icon_eb7ba6c58d7d7150ed06bebd42338ee1);
+            
+    
+            var circle_marker_66775b37ae415d14b71fca2000bf4b7e = L.circleMarker(
+                [85.3131, 25.0961],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.125999999999998, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_83a579754e758143ca13f4b3c965b4d5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bd53a2972967be33ee30cf29f3d6de5e = $(`<div id="html_bd53a2972967be33ee30cf29f3d6de5e" style="width: 100.0%; height: 100.0%;">         <b>Bihar</b><br>         🔴 HIGH RISK<br>         Risk Rate: 30.6%<br>         <hr>         Avg Charging Stations: 366<br>         Avg Charging Sessions: 395<br>         Avg Grid Load: 6738 MW<br>         </div>`)[0];
+                popup_83a579754e758143ca13f4b3c965b4d5.setContent(html_bd53a2972967be33ee30cf29f3d6de5e);
+            
+        
+
+        circle_marker_66775b37ae415d14b71fca2000bf4b7e.bindPopup(popup_83a579754e758143ca13f4b3c965b4d5)
+        ;
+
+        
+    
+    
+            circle_marker_66775b37ae415d14b71fca2000bf4b7e.bindTooltip(
+                `<div>
+                     Bihar: 30.6% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e0aeed034038a2fadf5021253bd8695c = L.marker(
+                [85.3131, 25.0961],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_48eb0e51020f86fb5f4dc4dce498f189 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_919a7fe372b342ea934e4234430708a7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6f0994e476dc89e4257ea9889c532534 = $(`<div id="html_6f0994e476dc89e4257ea9889c532534" style="width: 100.0%; height: 100.0%;">Bihar</div>`)[0];
+                popup_919a7fe372b342ea934e4234430708a7.setContent(html_6f0994e476dc89e4257ea9889c532534);
+            
+        
+
+        marker_e0aeed034038a2fadf5021253bd8695c.bindPopup(popup_919a7fe372b342ea934e4234430708a7)
+        ;
+
+        
+    
+    
+                marker_e0aeed034038a2fadf5021253bd8695c.setIcon(icon_48eb0e51020f86fb5f4dc4dce498f189);
+            
+    
+            var circle_marker_5b040ecacf1277be0fc5447367117b5d = L.circleMarker(
+                [81.6296, 21.2787],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.006, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_4fe6e7a07807c1a083589f2a1577e150 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6e5d697a16e845c13cbb84d44ff3d5ed = $(`<div id="html_6e5d697a16e845c13cbb84d44ff3d5ed" style="width: 100.0%; height: 100.0%;">         <b>Chhattisgarh</b><br>         🔴 HIGH RISK<br>         Risk Rate: 30.0%<br>         <hr>         Avg Charging Stations: 372<br>         Avg Charging Sessions: 361<br>         Avg Grid Load: 6664 MW<br>         </div>`)[0];
+                popup_4fe6e7a07807c1a083589f2a1577e150.setContent(html_6e5d697a16e845c13cbb84d44ff3d5ed);
+            
+        
+
+        circle_marker_5b040ecacf1277be0fc5447367117b5d.bindPopup(popup_4fe6e7a07807c1a083589f2a1577e150)
+        ;
+
+        
+    
+    
+            circle_marker_5b040ecacf1277be0fc5447367117b5d.bindTooltip(
+                `<div>
+                     Chhattisgarh: 30.0% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_750d46e66515b3d5ded71f5c490cffb0 = L.marker(
+                [81.6296, 21.2787],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_ee07fc270e6c8f5ead3125c976588a22 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_65bb402b0f2360d7d4dcd5d36ffcdc3a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f7d9194365d18b90e8e2299ed920597c = $(`<div id="html_f7d9194365d18b90e8e2299ed920597c" style="width: 100.0%; height: 100.0%;">Chhattisgarh</div>`)[0];
+                popup_65bb402b0f2360d7d4dcd5d36ffcdc3a.setContent(html_f7d9194365d18b90e8e2299ed920597c);
+            
+        
+
+        marker_750d46e66515b3d5ded71f5c490cffb0.bindPopup(popup_65bb402b0f2360d7d4dcd5d36ffcdc3a)
+        ;
+
+        
+    
+    
+                marker_750d46e66515b3d5ded71f5c490cffb0.setIcon(icon_ee07fc270e6c8f5ead3125c976588a22);
+            
+    
+            var circle_marker_a94ec247be8d40f54230986df68a8002 = L.circleMarker(
+                [73.8278, 15.2993],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.204, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_6da2efd33b77e690592886e738b6f53a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e45d3a106bdf39c947c0662f54202e23 = $(`<div id="html_e45d3a106bdf39c947c0662f54202e23" style="width: 100.0%; height: 100.0%;">         <b>Goa</b><br>         🔴 HIGH RISK<br>         Risk Rate: 31.0%<br>         <hr>         Avg Charging Stations: 371<br>         Avg Charging Sessions: 388<br>         Avg Grid Load: 6746 MW<br>         </div>`)[0];
+                popup_6da2efd33b77e690592886e738b6f53a.setContent(html_e45d3a106bdf39c947c0662f54202e23);
+            
+        
+
+        circle_marker_a94ec247be8d40f54230986df68a8002.bindPopup(popup_6da2efd33b77e690592886e738b6f53a)
+        ;
+
+        
+    
+    
+            circle_marker_a94ec247be8d40f54230986df68a8002.bindTooltip(
+                `<div>
+                     Goa: 31.0% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_781310cefe9586a8b1202b590ca56bb8 = L.marker(
+                [73.8278, 15.2993],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_64874eb1f48bd1012514bf07e003d2e4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d39cd98b97f5b3d2a60f7c298be162d1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_887acef67854f71a52d6100124461f5d = $(`<div id="html_887acef67854f71a52d6100124461f5d" style="width: 100.0%; height: 100.0%;">Goa</div>`)[0];
+                popup_d39cd98b97f5b3d2a60f7c298be162d1.setContent(html_887acef67854f71a52d6100124461f5d);
+            
+        
+
+        marker_781310cefe9586a8b1202b590ca56bb8.bindPopup(popup_d39cd98b97f5b3d2a60f7c298be162d1)
+        ;
+
+        
+    
+    
+                marker_781310cefe9586a8b1202b590ca56bb8.setIcon(icon_64874eb1f48bd1012514bf07e003d2e4);
+            
+    
+            var circle_marker_aea8f3af07898404b07a5a1dd75edacd = L.circleMarker(
+                [72.6369, 22.2587],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.78, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_2e4a4576614136749be4952af3616a85 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ed16020d910db74533f928ead4f9ec0d = $(`<div id="html_ed16020d910db74533f928ead4f9ec0d" style="width: 100.0%; height: 100.0%;">         <b>Gujarat</b><br>         🔴 HIGH RISK<br>         Risk Rate: 33.9%<br>         <hr>         Avg Charging Stations: 370<br>         Avg Charging Sessions: 366<br>         Avg Grid Load: 6767 MW<br>         </div>`)[0];
+                popup_2e4a4576614136749be4952af3616a85.setContent(html_ed16020d910db74533f928ead4f9ec0d);
+            
+        
+
+        circle_marker_aea8f3af07898404b07a5a1dd75edacd.bindPopup(popup_2e4a4576614136749be4952af3616a85)
+        ;
+
+        
+    
+    
+            circle_marker_aea8f3af07898404b07a5a1dd75edacd.bindTooltip(
+                `<div>
+                     Gujarat: 33.9% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_8031199f35a14fc92608eaabbf5b387f = L.marker(
+                [72.6369, 22.2587],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_fd675e7dcd91f1e61bc3f31da7cceff7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8b1b356a35e255cdc180ed71a638b452 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9b0855ac072aa236ad52eaf977418452 = $(`<div id="html_9b0855ac072aa236ad52eaf977418452" style="width: 100.0%; height: 100.0%;">Gujarat</div>`)[0];
+                popup_8b1b356a35e255cdc180ed71a638b452.setContent(html_9b0855ac072aa236ad52eaf977418452);
+            
+        
+
+        marker_8031199f35a14fc92608eaabbf5b387f.bindPopup(popup_8b1b356a35e255cdc180ed71a638b452)
+        ;
+
+        
+    
+    
+                marker_8031199f35a14fc92608eaabbf5b387f.setIcon(icon_fd675e7dcd91f1e61bc3f31da7cceff7);
+            
+    
+            var circle_marker_387c1b1453db012227d77615a0ee9187 = L.circleMarker(
+                [77.0373, 29.0588],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.062, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_ccc7a69554ce03e796abb05c6850754c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5bcdaaae8512e15da07d2358a2980263 = $(`<div id="html_5bcdaaae8512e15da07d2358a2980263" style="width: 100.0%; height: 100.0%;">         <b>Haryana</b><br>         🔴 HIGH RISK<br>         Risk Rate: 35.3%<br>         <hr>         Avg Charging Stations: 396<br>         Avg Charging Sessions: 371<br>         Avg Grid Load: 6866 MW<br>         </div>`)[0];
+                popup_ccc7a69554ce03e796abb05c6850754c.setContent(html_5bcdaaae8512e15da07d2358a2980263);
+            
+        
+
+        circle_marker_387c1b1453db012227d77615a0ee9187.bindPopup(popup_ccc7a69554ce03e796abb05c6850754c)
+        ;
+
+        
+    
+    
+            circle_marker_387c1b1453db012227d77615a0ee9187.bindTooltip(
+                `<div>
+                     Haryana: 35.3% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b7fadc6e9bb9f2f3fbf98c3487697679 = L.marker(
+                [77.0373, 29.0588],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_e8140662d26df429ea430159420a0bae = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d00d4e4d9f4511146f8b9ef1f89d3e0b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7749cab86fc6b6d8a54755c85ad53660 = $(`<div id="html_7749cab86fc6b6d8a54755c85ad53660" style="width: 100.0%; height: 100.0%;">Haryana</div>`)[0];
+                popup_d00d4e4d9f4511146f8b9ef1f89d3e0b.setContent(html_7749cab86fc6b6d8a54755c85ad53660);
+            
+        
+
+        marker_b7fadc6e9bb9f2f3fbf98c3487697679.bindPopup(popup_d00d4e4d9f4511146f8b9ef1f89d3e0b)
+        ;
+
+        
+    
+    
+                marker_b7fadc6e9bb9f2f3fbf98c3487697679.setIcon(icon_e8140662d26df429ea430159420a0bae);
+            
+    
+            var circle_marker_f7b3c8efc10bf2d6e1668226aa4f2fbb = L.circleMarker(
+                [77.1734, 31.7894],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.504, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_3ef391f2363b94bd7560479d9f2bc25e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_35994d97b9a0355ea35c570d3a8430f9 = $(`<div id="html_35994d97b9a0355ea35c570d3a8430f9" style="width: 100.0%; height: 100.0%;">         <b>Himachal Pradesh</b><br>         🔴 HIGH RISK<br>         Risk Rate: 32.5%<br>         <hr>         Avg Charging Stations: 388<br>         Avg Charging Sessions: 373<br>         Avg Grid Load: 6749 MW<br>         </div>`)[0];
+                popup_3ef391f2363b94bd7560479d9f2bc25e.setContent(html_35994d97b9a0355ea35c570d3a8430f9);
+            
+        
+
+        circle_marker_f7b3c8efc10bf2d6e1668226aa4f2fbb.bindPopup(popup_3ef391f2363b94bd7560479d9f2bc25e)
+        ;
+
+        
+    
+    
+            circle_marker_f7b3c8efc10bf2d6e1668226aa4f2fbb.bindTooltip(
+                `<div>
+                     Himachal Pradesh: 32.5% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f46c17ce79e00f6f13437149f69e58bd = L.marker(
+                [77.1734, 31.7894],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_bcccc173b0d911210d022f06f22c6015 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dbe72602e9988f9d076f5bb58e1edf36 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_13f429d2b7021f00fc24c5e1acc4b295 = $(`<div id="html_13f429d2b7021f00fc24c5e1acc4b295" style="width: 100.0%; height: 100.0%;">Himachal Pradesh</div>`)[0];
+                popup_dbe72602e9988f9d076f5bb58e1edf36.setContent(html_13f429d2b7021f00fc24c5e1acc4b295);
+            
+        
+
+        marker_f46c17ce79e00f6f13437149f69e58bd.bindPopup(popup_dbe72602e9988f9d076f5bb58e1edf36)
+        ;
+
+        
+    
+    
+                marker_f46c17ce79e00f6f13437149f69e58bd.setIcon(icon_bcccc173b0d911210d022f06f22c6015);
+            
+    
+            var circle_marker_f4eaf4e3bd8c57267ac1f43caecfc247 = L.circleMarker(
+                [85.2799, 23.6102],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.794, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_fcc314b60b8ad072909bfa7e300ba78a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fc8bbcdb9c83a89602aea7a45a8d52d5 = $(`<div id="html_fc8bbcdb9c83a89602aea7a45a8d52d5" style="width: 100.0%; height: 100.0%;">         <b>Jharkhand</b><br>         🔴 HIGH RISK<br>         Risk Rate: 34.0%<br>         <hr>         Avg Charging Stations: 367<br>         Avg Charging Sessions: 376<br>         Avg Grid Load: 6839 MW<br>         </div>`)[0];
+                popup_fcc314b60b8ad072909bfa7e300ba78a.setContent(html_fc8bbcdb9c83a89602aea7a45a8d52d5);
+            
+        
+
+        circle_marker_f4eaf4e3bd8c57267ac1f43caecfc247.bindPopup(popup_fcc314b60b8ad072909bfa7e300ba78a)
+        ;
+
+        
+    
+    
+            circle_marker_f4eaf4e3bd8c57267ac1f43caecfc247.bindTooltip(
+                `<div>
+                     Jharkhand: 34.0% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_41a12be7ad4f3dde6eff2ca63f84bae1 = L.marker(
+                [85.2799, 23.6102],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_d826e6dd12f0dfbbb04c92f82bf2039b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fb77defd80c7d1fe98e0b3c77009fa5b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_908f264e0ef2965c3325e9516fac5672 = $(`<div id="html_908f264e0ef2965c3325e9516fac5672" style="width: 100.0%; height: 100.0%;">Jharkhand</div>`)[0];
+                popup_fb77defd80c7d1fe98e0b3c77009fa5b.setContent(html_908f264e0ef2965c3325e9516fac5672);
+            
+        
+
+        marker_41a12be7ad4f3dde6eff2ca63f84bae1.bindPopup(popup_fb77defd80c7d1fe98e0b3c77009fa5b)
+        ;
+
+        
+    
+    
+                marker_41a12be7ad4f3dde6eff2ca63f84bae1.setIcon(icon_d826e6dd12f0dfbbb04c92f82bf2039b);
+            
+    
+            var circle_marker_66bf2d32c94a052a8ba6f9e01142a62e = L.circleMarker(
+                [75.7139, 15.3173],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.082, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_df65b314a95a444ff7c329dbeded7a10 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b386345f332f03080e3116d5700f0e08 = $(`<div id="html_b386345f332f03080e3116d5700f0e08" style="width: 100.0%; height: 100.0%;">         <b>Karnataka</b><br>         🔴 HIGH RISK<br>         Risk Rate: 30.4%<br>         <hr>         Avg Charging Stations: 364<br>         Avg Charging Sessions: 349<br>         Avg Grid Load: 6637 MW<br>         </div>`)[0];
+                popup_df65b314a95a444ff7c329dbeded7a10.setContent(html_b386345f332f03080e3116d5700f0e08);
+            
+        
+
+        circle_marker_66bf2d32c94a052a8ba6f9e01142a62e.bindPopup(popup_df65b314a95a444ff7c329dbeded7a10)
+        ;
+
+        
+    
+    
+            circle_marker_66bf2d32c94a052a8ba6f9e01142a62e.bindTooltip(
+                `<div>
+                     Karnataka: 30.4% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_0ee03c6e941621d1a5322a681a9a7ec0 = L.marker(
+                [75.7139, 15.3173],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_25dfc7f0cc57b674c65edbd3c2f51663 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_52e4a468f002d40278bcb5e0c6ae9ca4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2315cc0d049f653a982976c7e43b4cb3 = $(`<div id="html_2315cc0d049f653a982976c7e43b4cb3" style="width: 100.0%; height: 100.0%;">Karnataka</div>`)[0];
+                popup_52e4a468f002d40278bcb5e0c6ae9ca4.setContent(html_2315cc0d049f653a982976c7e43b4cb3);
+            
+        
+
+        marker_0ee03c6e941621d1a5322a681a9a7ec0.bindPopup(popup_52e4a468f002d40278bcb5e0c6ae9ca4)
+        ;
+
+        
+    
+    
+                marker_0ee03c6e941621d1a5322a681a9a7ec0.setIcon(icon_25dfc7f0cc57b674c65edbd3c2f51663);
+            
+    
+            var circle_marker_9566402b7d649909fdd4f67870e1115f = L.circleMarker(
+                [76.2711, 10.8505],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.064, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_649bc99bdb02844ec6e8877cf97dbb4a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0cd61a67f0acccaee62329a6e77b21f5 = $(`<div id="html_0cd61a67f0acccaee62329a6e77b21f5" style="width: 100.0%; height: 100.0%;">         <b>Kerala</b><br>         🔴 HIGH RISK<br>         Risk Rate: 30.3%<br>         <hr>         Avg Charging Stations: 369<br>         Avg Charging Sessions: 389<br>         Avg Grid Load: 6635 MW<br>         </div>`)[0];
+                popup_649bc99bdb02844ec6e8877cf97dbb4a.setContent(html_0cd61a67f0acccaee62329a6e77b21f5);
+            
+        
+
+        circle_marker_9566402b7d649909fdd4f67870e1115f.bindPopup(popup_649bc99bdb02844ec6e8877cf97dbb4a)
+        ;
+
+        
+    
+    
+            circle_marker_9566402b7d649909fdd4f67870e1115f.bindTooltip(
+                `<div>
+                     Kerala: 30.3% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b4c0836aeda23079231bbe52feaad127 = L.marker(
+                [76.2711, 10.8505],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_a2d899494b8e9e6da5d792ffab19d842 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e42183faddd6e44c90d20bb9bc14abbd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1ba70204d547e39ef0c35df685f7d4eb = $(`<div id="html_1ba70204d547e39ef0c35df685f7d4eb" style="width: 100.0%; height: 100.0%;">Kerala</div>`)[0];
+                popup_e42183faddd6e44c90d20bb9bc14abbd.setContent(html_1ba70204d547e39ef0c35df685f7d4eb);
+            
+        
+
+        marker_b4c0836aeda23079231bbe52feaad127.bindPopup(popup_e42183faddd6e44c90d20bb9bc14abbd)
+        ;
+
+        
+    
+    
+                marker_b4c0836aeda23079231bbe52feaad127.setIcon(icon_a2d899494b8e9e6da5d792ffab19d842);
+            
+    
+            var circle_marker_790108bd60758ddbae286ab8239600e7 = L.circleMarker(
+                [78.6569, 22.9375],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.428, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_111a21065711f6e387e7a63f1b7c550a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d6d75fd5b312254a631c82292cc44943 = $(`<div id="html_d6d75fd5b312254a631c82292cc44943" style="width: 100.0%; height: 100.0%;">         <b>Madhya Pradesh</b><br>         🔴 HIGH RISK<br>         Risk Rate: 32.1%<br>         <hr>         Avg Charging Stations: 353<br>         Avg Charging Sessions: 357<br>         Avg Grid Load: 6774 MW<br>         </div>`)[0];
+                popup_111a21065711f6e387e7a63f1b7c550a.setContent(html_d6d75fd5b312254a631c82292cc44943);
+            
+        
+
+        circle_marker_790108bd60758ddbae286ab8239600e7.bindPopup(popup_111a21065711f6e387e7a63f1b7c550a)
+        ;
+
+        
+    
+    
+            circle_marker_790108bd60758ddbae286ab8239600e7.bindTooltip(
+                `<div>
+                     Madhya Pradesh: 32.1% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_07f93e4fa3be1d0536b3dcf5d99612da = L.marker(
+                [78.6569, 22.9375],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_4a0c5a767dad4332ba4353ec849fe28e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_868e454ed12f89d46706a817d896c8c2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9a93d82ffb616cf4f4aa932693305d33 = $(`<div id="html_9a93d82ffb616cf4f4aa932693305d33" style="width: 100.0%; height: 100.0%;">Madhya Pradesh</div>`)[0];
+                popup_868e454ed12f89d46706a817d896c8c2.setContent(html_9a93d82ffb616cf4f4aa932693305d33);
+            
+        
+
+        marker_07f93e4fa3be1d0536b3dcf5d99612da.bindPopup(popup_868e454ed12f89d46706a817d896c8c2)
+        ;
+
+        
+    
+    
+                marker_07f93e4fa3be1d0536b3dcf5d99612da.setIcon(icon_4a0c5a767dad4332ba4353ec849fe28e);
+            
+    
+            var circle_marker_a9030c303e093b07ea3e4fb4abab6b84 = L.circleMarker(
+                [75.7139, 19.7515],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.284, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_cd73e1a6ad0571ea09eefebf62e9725f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c63d1513cfdc77d690655180a615c54a = $(`<div id="html_c63d1513cfdc77d690655180a615c54a" style="width: 100.0%; height: 100.0%;">         <b>Maharashtra</b><br>         🔴 HIGH RISK<br>         Risk Rate: 31.4%<br>         <hr>         Avg Charging Stations: 366<br>         Avg Charging Sessions: 410<br>         Avg Grid Load: 6738 MW<br>         </div>`)[0];
+                popup_cd73e1a6ad0571ea09eefebf62e9725f.setContent(html_c63d1513cfdc77d690655180a615c54a);
+            
+        
+
+        circle_marker_a9030c303e093b07ea3e4fb4abab6b84.bindPopup(popup_cd73e1a6ad0571ea09eefebf62e9725f)
+        ;
+
+        
+    
+    
+            circle_marker_a9030c303e093b07ea3e4fb4abab6b84.bindTooltip(
+                `<div>
+                     Maharashtra: 31.4% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_682e5033db97ea6265ffc975351742d4 = L.marker(
+                [75.7139, 19.7515],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_c89b197d92808524d2c65fd1a4021249 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9aacd573f7dee7828b4d3e14637dd70c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d92bbb52b342f5aaa2ebc06ae3530616 = $(`<div id="html_d92bbb52b342f5aaa2ebc06ae3530616" style="width: 100.0%; height: 100.0%;">Maharashtra</div>`)[0];
+                popup_9aacd573f7dee7828b4d3e14637dd70c.setContent(html_d92bbb52b342f5aaa2ebc06ae3530616);
+            
+        
+
+        marker_682e5033db97ea6265ffc975351742d4.bindPopup(popup_9aacd573f7dee7828b4d3e14637dd70c)
+        ;
+
+        
+    
+    
+                marker_682e5033db97ea6265ffc975351742d4.setIcon(icon_c89b197d92808524d2c65fd1a4021249);
+            
+    
+            var circle_marker_4b29b5f64b34754b1d84ea4fc475d6fd = L.circleMarker(
+                [94.7868, 24.6637],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.052, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_dce4788ed5dc3dec98f061b7ae12499b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3f538e605008143acbf8f41b3af438c4 = $(`<div id="html_3f538e605008143acbf8f41b3af438c4" style="width: 100.0%; height: 100.0%;">         <b>Manipur</b><br>         🔴 HIGH RISK<br>         Risk Rate: 30.3%<br>         <hr>         Avg Charging Stations: 382<br>         Avg Charging Sessions: 359<br>         Avg Grid Load: 6728 MW<br>         </div>`)[0];
+                popup_dce4788ed5dc3dec98f061b7ae12499b.setContent(html_3f538e605008143acbf8f41b3af438c4);
+            
+        
+
+        circle_marker_4b29b5f64b34754b1d84ea4fc475d6fd.bindPopup(popup_dce4788ed5dc3dec98f061b7ae12499b)
+        ;
+
+        
+    
+    
+            circle_marker_4b29b5f64b34754b1d84ea4fc475d6fd.bindTooltip(
+                `<div>
+                     Manipur: 30.3% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_6589bcb9833879b3b2338d1f4e800b33 = L.marker(
+                [94.7868, 24.6637],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_4d34458d8b97f3b1bff5814ddfc329a5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7f8544957ef3989a8dba0c6c1e42e470 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7c8521e25a0f00c7180333b91b032c20 = $(`<div id="html_7c8521e25a0f00c7180333b91b032c20" style="width: 100.0%; height: 100.0%;">Manipur</div>`)[0];
+                popup_7f8544957ef3989a8dba0c6c1e42e470.setContent(html_7c8521e25a0f00c7180333b91b032c20);
+            
+        
+
+        marker_6589bcb9833879b3b2338d1f4e800b33.bindPopup(popup_7f8544957ef3989a8dba0c6c1e42e470)
+        ;
+
+        
+    
+    
+                marker_6589bcb9833879b3b2338d1f4e800b33.setIcon(icon_4d34458d8b97f3b1bff5814ddfc329a5);
+            
+    
+            var circle_marker_77c1a07a18631c68baf8c2090fd05ee9 = L.circleMarker(
+                [91.896, 25.467],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.04, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_2d5472269db6975124e514cfd272eea0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5be733152758115006f159be532fc460 = $(`<div id="html_5be733152758115006f159be532fc460" style="width: 100.0%; height: 100.0%;">         <b>Meghalaya</b><br>         🔴 HIGH RISK<br>         Risk Rate: 35.2%<br>         <hr>         Avg Charging Stations: 375<br>         Avg Charging Sessions: 362<br>         Avg Grid Load: 6832 MW<br>         </div>`)[0];
+                popup_2d5472269db6975124e514cfd272eea0.setContent(html_5be733152758115006f159be532fc460);
+            
+        
+
+        circle_marker_77c1a07a18631c68baf8c2090fd05ee9.bindPopup(popup_2d5472269db6975124e514cfd272eea0)
+        ;
+
+        
+    
+    
+            circle_marker_77c1a07a18631c68baf8c2090fd05ee9.bindTooltip(
+                `<div>
+                     Meghalaya: 35.2% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_88ce15614811b2ff133eb4c36676dfc6 = L.marker(
+                [91.896, 25.467],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_57f19c5ccb11f8d6a7be55d630e0cc57 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_36d90f6157eaa066acd7b332c0ed9219 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_79750b5dd4052711d5d7c45707d8529d = $(`<div id="html_79750b5dd4052711d5d7c45707d8529d" style="width: 100.0%; height: 100.0%;">Meghalaya</div>`)[0];
+                popup_36d90f6157eaa066acd7b332c0ed9219.setContent(html_79750b5dd4052711d5d7c45707d8529d);
+            
+        
+
+        marker_88ce15614811b2ff133eb4c36676dfc6.bindPopup(popup_36d90f6157eaa066acd7b332c0ed9219)
+        ;
+
+        
+    
+    
+                marker_88ce15614811b2ff133eb4c36676dfc6.setIcon(icon_57f19c5ccb11f8d6a7be55d630e0cc57);
+            
+    
+            var circle_marker_87b94c9edf6672a05543353d47d6162f = L.circleMarker(
+                [93.9063, 23.1645],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.894, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_844445ac52cedcf87d77a57e89dad94a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_230b375c00f9a94d5cb582ad76475363 = $(`<div id="html_230b375c00f9a94d5cb582ad76475363" style="width: 100.0%; height: 100.0%;">         <b>Mizoram</b><br>         🔴 HIGH RISK<br>         Risk Rate: 34.5%<br>         <hr>         Avg Charging Stations: 378<br>         Avg Charging Sessions: 375<br>         Avg Grid Load: 6883 MW<br>         </div>`)[0];
+                popup_844445ac52cedcf87d77a57e89dad94a.setContent(html_230b375c00f9a94d5cb582ad76475363);
+            
+        
+
+        circle_marker_87b94c9edf6672a05543353d47d6162f.bindPopup(popup_844445ac52cedcf87d77a57e89dad94a)
+        ;
+
+        
+    
+    
+            circle_marker_87b94c9edf6672a05543353d47d6162f.bindTooltip(
+                `<div>
+                     Mizoram: 34.5% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f20ef993efae7bf084a19000119577c3 = L.marker(
+                [93.9063, 23.1645],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_cdb962da2b357615eceeda8a16ba4212 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4bc200b9f54b971778a856abbb9b6a43 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b1611704052f1b9c3aaafd78f9dc3672 = $(`<div id="html_b1611704052f1b9c3aaafd78f9dc3672" style="width: 100.0%; height: 100.0%;">Mizoram</div>`)[0];
+                popup_4bc200b9f54b971778a856abbb9b6a43.setContent(html_b1611704052f1b9c3aaafd78f9dc3672);
+            
+        
+
+        marker_f20ef993efae7bf084a19000119577c3.bindPopup(popup_4bc200b9f54b971778a856abbb9b6a43)
+        ;
+
+        
+    
+    
+                marker_f20ef993efae7bf084a19000119577c3.setIcon(icon_cdb962da2b357615eceeda8a16ba4212);
+            
+    
+            var circle_marker_6f8d29d7fc78bdf28df5dbdde7e3b074 = L.circleMarker(
+                [94.5614, 26.1584],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.962, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_6a878111d1e0f15bf097588e27994ac7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cd050fdeaf47addaa366e0323900cd65 = $(`<div id="html_cd050fdeaf47addaa366e0323900cd65" style="width: 100.0%; height: 100.0%;">         <b>Nagaland</b><br>         🟠 MEDIUM RISK<br>         Risk Rate: 29.8%<br>         <hr>         Avg Charging Stations: 370<br>         Avg Charging Sessions: 362<br>         Avg Grid Load: 6665 MW<br>         </div>`)[0];
+                popup_6a878111d1e0f15bf097588e27994ac7.setContent(html_cd050fdeaf47addaa366e0323900cd65);
+            
+        
+
+        circle_marker_6f8d29d7fc78bdf28df5dbdde7e3b074.bindPopup(popup_6a878111d1e0f15bf097588e27994ac7)
+        ;
+
+        
+    
+    
+            circle_marker_6f8d29d7fc78bdf28df5dbdde7e3b074.bindTooltip(
+                `<div>
+                     Nagaland: 29.8% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_a2f304027cae82e590bc65d3bdc5680d = L.marker(
+                [94.5614, 26.1584],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_370d41b9ea791bba2be3ed3e8bf4e562 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_887eb8bdc48437a9083b2f5b815f0656 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d64572c1c3480522b5348ce3f2ad1f0a = $(`<div id="html_d64572c1c3480522b5348ce3f2ad1f0a" style="width: 100.0%; height: 100.0%;">Nagaland</div>`)[0];
+                popup_887eb8bdc48437a9083b2f5b815f0656.setContent(html_d64572c1c3480522b5348ce3f2ad1f0a);
+            
+        
+
+        marker_a2f304027cae82e590bc65d3bdc5680d.bindPopup(popup_887eb8bdc48437a9083b2f5b815f0656)
+        ;
+
+        
+    
+    
+                marker_a2f304027cae82e590bc65d3bdc5680d.setIcon(icon_370d41b9ea791bba2be3ed3e8bf4e562);
+            
+    
+            var circle_marker_2ba39c53d67454b6b4ea95b6d1c9004d = L.circleMarker(
+                [84.1239, 20.9517],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.69, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_31fe9e31fce4e29f44ae99611980292a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_17b556e498bfc041caeef021404065d8 = $(`<div id="html_17b556e498bfc041caeef021404065d8" style="width: 100.0%; height: 100.0%;">         <b>Odisha</b><br>         🔴 HIGH RISK<br>         Risk Rate: 33.5%<br>         <hr>         Avg Charging Stations: 375<br>         Avg Charging Sessions: 392<br>         Avg Grid Load: 6877 MW<br>         </div>`)[0];
+                popup_31fe9e31fce4e29f44ae99611980292a.setContent(html_17b556e498bfc041caeef021404065d8);
+            
+        
+
+        circle_marker_2ba39c53d67454b6b4ea95b6d1c9004d.bindPopup(popup_31fe9e31fce4e29f44ae99611980292a)
+        ;
+
+        
+    
+    
+            circle_marker_2ba39c53d67454b6b4ea95b6d1c9004d.bindTooltip(
+                `<div>
+                     Odisha: 33.5% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_89799ccacbbc0abd1a4c1227c966c623 = L.marker(
+                [84.1239, 20.9517],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_0e5f42157329e7f15a096b28053f2143 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_efe497b4a8a33dfd814f297d07a5728d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1034ed8b20950212565cdc2b0187697c = $(`<div id="html_1034ed8b20950212565cdc2b0187697c" style="width: 100.0%; height: 100.0%;">Odisha</div>`)[0];
+                popup_efe497b4a8a33dfd814f297d07a5728d.setContent(html_1034ed8b20950212565cdc2b0187697c);
+            
+        
+
+        marker_89799ccacbbc0abd1a4c1227c966c623.bindPopup(popup_efe497b4a8a33dfd814f297d07a5728d)
+        ;
+
+        
+    
+    
+                marker_89799ccacbbc0abd1a4c1227c966c623.setIcon(icon_0e5f42157329e7f15a096b28053f2143);
+            
+    
+            var circle_marker_410300a13781e0e0bd6c9be14bd8659e = L.circleMarker(
+                [75.5941, 31.1471],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.206, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_eff79c97cee6a4633c49d36d7cd66c6e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_110d9e6d9ced3c8253ddeb1af83ef9db = $(`<div id="html_110d9e6d9ced3c8253ddeb1af83ef9db" style="width: 100.0%; height: 100.0%;">         <b>Punjab</b><br>         🔴 HIGH RISK<br>         Risk Rate: 31.0%<br>         <hr>         Avg Charging Stations: 369<br>         Avg Charging Sessions: 361<br>         Avg Grid Load: 6835 MW<br>         </div>`)[0];
+                popup_eff79c97cee6a4633c49d36d7cd66c6e.setContent(html_110d9e6d9ced3c8253ddeb1af83ef9db);
+            
+        
+
+        circle_marker_410300a13781e0e0bd6c9be14bd8659e.bindPopup(popup_eff79c97cee6a4633c49d36d7cd66c6e)
+        ;
+
+        
+    
+    
+            circle_marker_410300a13781e0e0bd6c9be14bd8659e.bindTooltip(
+                `<div>
+                     Punjab: 31.0% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b98ca3c6ceb16763db3991c6cda2795f = L.marker(
+                [75.5941, 31.1471],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_c50a1ac7ca0f28298ae7f747f8357dbf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_79b0a81a0256ed23ce94564bf47eda93 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ed4d6bcc5260ddb19b53faa67c6267dc = $(`<div id="html_ed4d6bcc5260ddb19b53faa67c6267dc" style="width: 100.0%; height: 100.0%;">Punjab</div>`)[0];
+                popup_79b0a81a0256ed23ce94564bf47eda93.setContent(html_ed4d6bcc5260ddb19b53faa67c6267dc);
+            
+        
+
+        marker_b98ca3c6ceb16763db3991c6cda2795f.bindPopup(popup_79b0a81a0256ed23ce94564bf47eda93)
+        ;
+
+        
+    
+    
+                marker_b98ca3c6ceb16763db3991c6cda2795f.setIcon(icon_c50a1ac7ca0f28298ae7f747f8357dbf);
+            
+    
+            var circle_marker_f2088dd4871253013546d79f88d2645b = L.circleMarker(
+                [75.7139, 27.0238],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.188000000000002, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_32d0e8ab0c6d2fe43aa5867b2b6dd3e7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f283cd4837c958befefd4d6c85b75187 = $(`<div id="html_f283cd4837c958befefd4d6c85b75187" style="width: 100.0%; height: 100.0%;">         <b>Rajasthan</b><br>         🔴 HIGH RISK<br>         Risk Rate: 30.9%<br>         <hr>         Avg Charging Stations: 379<br>         Avg Charging Sessions: 390<br>         Avg Grid Load: 6716 MW<br>         </div>`)[0];
+                popup_32d0e8ab0c6d2fe43aa5867b2b6dd3e7.setContent(html_f283cd4837c958befefd4d6c85b75187);
+            
+        
+
+        circle_marker_f2088dd4871253013546d79f88d2645b.bindPopup(popup_32d0e8ab0c6d2fe43aa5867b2b6dd3e7)
+        ;
+
+        
+    
+    
+            circle_marker_f2088dd4871253013546d79f88d2645b.bindTooltip(
+                `<div>
+                     Rajasthan: 30.9% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_6b253045cda7f7f540f685ca32c00423 = L.marker(
+                [75.7139, 27.0238],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_dd1531c1c8eacae92776d9b6a159facc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_82af6b586e47dbb3dcb37ca2e62d16c1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_85a47c264147f612696ecc48f988e74b = $(`<div id="html_85a47c264147f612696ecc48f988e74b" style="width: 100.0%; height: 100.0%;">Rajasthan</div>`)[0];
+                popup_82af6b586e47dbb3dcb37ca2e62d16c1.setContent(html_85a47c264147f612696ecc48f988e74b);
+            
+        
+
+        marker_6b253045cda7f7f540f685ca32c00423.bindPopup(popup_82af6b586e47dbb3dcb37ca2e62d16c1)
+        ;
+
+        
+    
+    
+                marker_6b253045cda7f7f540f685ca32c00423.setIcon(icon_dd1531c1c8eacae92776d9b6a159facc);
+            
+    
+            var circle_marker_7232890d4396d3f04e1174ac812b572b = L.circleMarker(
+                [88.5122, 27.533],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.228, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_17d85a06af6bfc1aaae1688eb908511b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bb82f8bf4f1aa127b6ce74bf84e538f0 = $(`<div id="html_bb82f8bf4f1aa127b6ce74bf84e538f0" style="width: 100.0%; height: 100.0%;">         <b>Sikkim</b><br>         🔴 HIGH RISK<br>         Risk Rate: 36.1%<br>         <hr>         Avg Charging Stations: 358<br>         Avg Charging Sessions: 390<br>         Avg Grid Load: 6964 MW<br>         </div>`)[0];
+                popup_17d85a06af6bfc1aaae1688eb908511b.setContent(html_bb82f8bf4f1aa127b6ce74bf84e538f0);
+            
+        
+
+        circle_marker_7232890d4396d3f04e1174ac812b572b.bindPopup(popup_17d85a06af6bfc1aaae1688eb908511b)
+        ;
+
+        
+    
+    
+            circle_marker_7232890d4396d3f04e1174ac812b572b.bindTooltip(
+                `<div>
+                     Sikkim: 36.1% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_1e84694b7272aeb2ec39db8887a6766d = L.marker(
+                [88.5122, 27.533],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_554640351e5ea2fefc40ff163df9d6b0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e331ddca467e37122e364346d7ae8bda = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2f0bcbb925820c39d7e8946e066f0989 = $(`<div id="html_2f0bcbb925820c39d7e8946e066f0989" style="width: 100.0%; height: 100.0%;">Sikkim</div>`)[0];
+                popup_e331ddca467e37122e364346d7ae8bda.setContent(html_2f0bcbb925820c39d7e8946e066f0989);
+            
+        
+
+        marker_1e84694b7272aeb2ec39db8887a6766d.bindPopup(popup_e331ddca467e37122e364346d7ae8bda)
+        ;
+
+        
+    
+    
+                marker_1e84694b7272aeb2ec39db8887a6766d.setIcon(icon_554640351e5ea2fefc40ff163df9d6b0);
+            
+    
+            var circle_marker_d22c1018ed1e96df4477bff2d2adcb98 = L.circleMarker(
+                [78.6569, 11.1271],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.39, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_f8993a609ba2c589e27bc8b0f18e1fd7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_771062dfe34b5fdff59959c602aeb39b = $(`<div id="html_771062dfe34b5fdff59959c602aeb39b" style="width: 100.0%; height: 100.0%;">         <b>Tamil Nadu</b><br>         🔴 HIGH RISK<br>         Risk Rate: 31.9%<br>         <hr>         Avg Charging Stations: 373<br>         Avg Charging Sessions: 400<br>         Avg Grid Load: 6766 MW<br>         </div>`)[0];
+                popup_f8993a609ba2c589e27bc8b0f18e1fd7.setContent(html_771062dfe34b5fdff59959c602aeb39b);
+            
+        
+
+        circle_marker_d22c1018ed1e96df4477bff2d2adcb98.bindPopup(popup_f8993a609ba2c589e27bc8b0f18e1fd7)
+        ;
+
+        
+    
+    
+            circle_marker_d22c1018ed1e96df4477bff2d2adcb98.bindTooltip(
+                `<div>
+                     Tamil Nadu: 31.9% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_16b7aac6f5235e9c9bc4440ac48e7e49 = L.marker(
+                [78.6569, 11.1271],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_5a1ea78e8635fa456a4523a271a8bd78 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a2b4ac92cc6a8f9643813a41f60add7b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7e3c8024b082dc0b1dcea05a2b6d911e = $(`<div id="html_7e3c8024b082dc0b1dcea05a2b6d911e" style="width: 100.0%; height: 100.0%;">Tamil Nadu</div>`)[0];
+                popup_a2b4ac92cc6a8f9643813a41f60add7b.setContent(html_7e3c8024b082dc0b1dcea05a2b6d911e);
+            
+        
+
+        marker_16b7aac6f5235e9c9bc4440ac48e7e49.bindPopup(popup_a2b4ac92cc6a8f9643813a41f60add7b)
+        ;
+
+        
+    
+    
+                marker_16b7aac6f5235e9c9bc4440ac48e7e49.setIcon(icon_5a1ea78e8635fa456a4523a271a8bd78);
+            
+    
+            var circle_marker_f90a939a9098c5647f1465e74ab53e3c = L.circleMarker(
+                [78.4711, 18.1124],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.346, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_47f68994e6146cc0bce38ca683c7f21f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_60924d8e73939ba7052f3bf174c2d754 = $(`<div id="html_60924d8e73939ba7052f3bf174c2d754" style="width: 100.0%; height: 100.0%;">         <b>Telangana</b><br>         🔴 HIGH RISK<br>         Risk Rate: 36.7%<br>         <hr>         Avg Charging Stations: 365<br>         Avg Charging Sessions: 388<br>         Avg Grid Load: 6992 MW<br>         </div>`)[0];
+                popup_47f68994e6146cc0bce38ca683c7f21f.setContent(html_60924d8e73939ba7052f3bf174c2d754);
+            
+        
+
+        circle_marker_f90a939a9098c5647f1465e74ab53e3c.bindPopup(popup_47f68994e6146cc0bce38ca683c7f21f)
+        ;
+
+        
+    
+    
+            circle_marker_f90a939a9098c5647f1465e74ab53e3c.bindTooltip(
+                `<div>
+                     Telangana: 36.7% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2563c847965cb38e9dfc0b63b7b1e64a = L.marker(
+                [78.4711, 18.1124],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_506ad5b792ad4622c4afa2c3b6a77d49 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4a82969b1a2e28f38bc4e5c5c43e8853 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a82f1e32de783a92a5245afb40cd5139 = $(`<div id="html_a82f1e32de783a92a5245afb40cd5139" style="width: 100.0%; height: 100.0%;">Telangana</div>`)[0];
+                popup_4a82969b1a2e28f38bc4e5c5c43e8853.setContent(html_a82f1e32de783a92a5245afb40cd5139);
+            
+        
+
+        marker_2563c847965cb38e9dfc0b63b7b1e64a.bindPopup(popup_4a82969b1a2e28f38bc4e5c5c43e8853)
+        ;
+
+        
+    
+    
+                marker_2563c847965cb38e9dfc0b63b7b1e64a.setIcon(icon_506ad5b792ad4622c4afa2c3b6a77d49);
+            
+    
+            var circle_marker_325c6653ce85dad81a44a345fe2c65cf = L.circleMarker(
+                [91.9882, 23.9408],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.508, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_e3196aead12fbda507b668a071bebe43 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ca7cf0ba16aff3ff1761ba02bf94ad06 = $(`<div id="html_ca7cf0ba16aff3ff1761ba02bf94ad06" style="width: 100.0%; height: 100.0%;">         <b>Tripura</b><br>         🔴 HIGH RISK<br>         Risk Rate: 32.5%<br>         <hr>         Avg Charging Stations: 371<br>         Avg Charging Sessions: 406<br>         Avg Grid Load: 6773 MW<br>         </div>`)[0];
+                popup_e3196aead12fbda507b668a071bebe43.setContent(html_ca7cf0ba16aff3ff1761ba02bf94ad06);
+            
+        
+
+        circle_marker_325c6653ce85dad81a44a345fe2c65cf.bindPopup(popup_e3196aead12fbda507b668a071bebe43)
+        ;
+
+        
+    
+    
+            circle_marker_325c6653ce85dad81a44a345fe2c65cf.bindTooltip(
+                `<div>
+                     Tripura: 32.5% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_6c294a12e8a3e8794a798d8c7a3f9f03 = L.marker(
+                [91.9882, 23.9408],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_c69754e62376cb153f2f72c11c0dae3b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_47544207f142636220c3d43e89d0a870 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_40a13857b5e580109c4da56a08016d39 = $(`<div id="html_40a13857b5e580109c4da56a08016d39" style="width: 100.0%; height: 100.0%;">Tripura</div>`)[0];
+                popup_47544207f142636220c3d43e89d0a870.setContent(html_40a13857b5e580109c4da56a08016d39);
+            
+        
+
+        marker_6c294a12e8a3e8794a798d8c7a3f9f03.bindPopup(popup_47544207f142636220c3d43e89d0a870)
+        ;
+
+        
+    
+    
+                marker_6c294a12e8a3e8794a798d8c7a3f9f03.setIcon(icon_c69754e62376cb153f2f72c11c0dae3b);
+            
+    
+            var circle_marker_0da0c39924cd49a0e7e6a371119fd6a4 = L.circleMarker(
+                [79.0193, 26.8467],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.632, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_97f3d20f2cce5c2a036a5a60b15fc023 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f2f8e96ce0de91b080822a266b56b673 = $(`<div id="html_f2f8e96ce0de91b080822a266b56b673" style="width: 100.0%; height: 100.0%;">         <b>Uttar Pradesh</b><br>         🟠 MEDIUM RISK<br>         Risk Rate: 28.2%<br>         <hr>         Avg Charging Stations: 395<br>         Avg Charging Sessions: 383<br>         Avg Grid Load: 6632 MW<br>         </div>`)[0];
+                popup_97f3d20f2cce5c2a036a5a60b15fc023.setContent(html_f2f8e96ce0de91b080822a266b56b673);
+            
+        
+
+        circle_marker_0da0c39924cd49a0e7e6a371119fd6a4.bindPopup(popup_97f3d20f2cce5c2a036a5a60b15fc023)
+        ;
+
+        
+    
+    
+            circle_marker_0da0c39924cd49a0e7e6a371119fd6a4.bindTooltip(
+                `<div>
+                     Uttar Pradesh: 28.2% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_80cd7d1b6e98c58fc43a580d896f588d = L.marker(
+                [79.0193, 26.8467],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_4e4f2f65b5404f62b15910a6578eef46 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_27546803cc11747f1489b2ff3cb8b705 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2c2bdc7ef0c68458c13eec83092fb424 = $(`<div id="html_2c2bdc7ef0c68458c13eec83092fb424" style="width: 100.0%; height: 100.0%;">Uttar Pradesh</div>`)[0];
+                popup_27546803cc11747f1489b2ff3cb8b705.setContent(html_2c2bdc7ef0c68458c13eec83092fb424);
+            
+        
+
+        marker_80cd7d1b6e98c58fc43a580d896f588d.bindPopup(popup_27546803cc11747f1489b2ff3cb8b705)
+        ;
+
+        
+    
+    
+                marker_80cd7d1b6e98c58fc43a580d896f588d.setIcon(icon_4e4f2f65b5404f62b15910a6578eef46);
+            
+    
+            var circle_marker_0143ba950f298c09e281c169c22934b0 = L.circleMarker(
+                [79.0193, 30.0668],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.018, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_d9d1a2c93490dc781aa7dde8e29d7529 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e9b5e9ac8210b82a80ec902063834c6b = $(`<div id="html_e9b5e9ac8210b82a80ec902063834c6b" style="width: 100.0%; height: 100.0%;">         <b>Uttarakhand</b><br>         🔴 HIGH RISK<br>         Risk Rate: 30.1%<br>         <hr>         Avg Charging Stations: 371<br>         Avg Charging Sessions: 401<br>         Avg Grid Load: 6673 MW<br>         </div>`)[0];
+                popup_d9d1a2c93490dc781aa7dde8e29d7529.setContent(html_e9b5e9ac8210b82a80ec902063834c6b);
+            
+        
+
+        circle_marker_0143ba950f298c09e281c169c22934b0.bindPopup(popup_d9d1a2c93490dc781aa7dde8e29d7529)
+        ;
+
+        
+    
+    
+            circle_marker_0143ba950f298c09e281c169c22934b0.bindTooltip(
+                `<div>
+                     Uttarakhand: 30.1% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b0b0bd4f56929bf53e50e658f4558a2d = L.marker(
+                [79.0193, 30.0668],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_9652f314a423dd18129c9f1f19f2eff2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c3664c6f41b3471c1e0bc178895d9ca2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_09530dd46b607b3a1e72fa0164c6e265 = $(`<div id="html_09530dd46b607b3a1e72fa0164c6e265" style="width: 100.0%; height: 100.0%;">Uttarakhand</div>`)[0];
+                popup_c3664c6f41b3471c1e0bc178895d9ca2.setContent(html_09530dd46b607b3a1e72fa0164c6e265);
+            
+        
+
+        marker_b0b0bd4f56929bf53e50e658f4558a2d.bindPopup(popup_c3664c6f41b3471c1e0bc178895d9ca2)
+        ;
+
+        
+    
+    
+                marker_b0b0bd4f56929bf53e50e658f4558a2d.setIcon(icon_9652f314a423dd18129c9f1f19f2eff2);
+            
+    
+            var circle_marker_e8cd57982b53b47a745a0fab0bdcf3d4 = L.circleMarker(
+                [88.3639, 24.5155],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.759999999999998, "stroke": true, "weight": 2}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+        var popup_054001536b0cfc6ef87f82ac0706faa4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_14edfef5134424e466d5aedd23dc62e3 = $(`<div id="html_14edfef5134424e466d5aedd23dc62e3" style="width: 100.0%; height: 100.0%;">         <b>West Bengal</b><br>         🔴 HIGH RISK<br>         Risk Rate: 33.8%<br>         <hr>         Avg Charging Stations: 382<br>         Avg Charging Sessions: 364<br>         Avg Grid Load: 6913 MW<br>         </div>`)[0];
+                popup_054001536b0cfc6ef87f82ac0706faa4.setContent(html_14edfef5134424e466d5aedd23dc62e3);
+            
+        
+
+        circle_marker_e8cd57982b53b47a745a0fab0bdcf3d4.bindPopup(popup_054001536b0cfc6ef87f82ac0706faa4)
+        ;
+
+        
+    
+    
+            circle_marker_e8cd57982b53b47a745a0fab0bdcf3d4.bindTooltip(
+                `<div>
+                     West Bengal: 33.8% Risk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f51d1f184641020a2c2c3b2604f3e517 = L.marker(
+                [88.3639, 24.5155],
+                {
+}
+            ).addTo(map_18176e7a776408ea02ee3b77e4d7c1ac);
+        
+    
+            var icon_29ae74498cd47e336f10c91e70649853 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgray",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c53659688cfcd90c246dd23113c9a81b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a3be2e1138dcb9b6e7a9828b5997c705 = $(`<div id="html_a3be2e1138dcb9b6e7a9828b5997c705" style="width: 100.0%; height: 100.0%;">West Bengal</div>`)[0];
+                popup_c53659688cfcd90c246dd23113c9a81b.setContent(html_a3be2e1138dcb9b6e7a9828b5997c705);
+            
+        
+
+        marker_f51d1f184641020a2c2c3b2604f3e517.bindPopup(popup_c53659688cfcd90c246dd23113c9a81b)
+        ;
+
+        
+    
+    
+                marker_f51d1f184641020a2c2c3b2604f3e517.setIcon(icon_29ae74498cd47e336f10c91e70649853);
+            
+</script>
+</html>
